@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <h1 class="titulo">Gesto de Tarea usando Drag and Drop</h1>
+        <hr>
+    </header>
+    <main class="main_tarea">
+        <div class="div_crear"id="div_crear">
+            <form class="formulario" id="formulario">
+                <label>Curso</label>
+                <input type="text" required placeholder="Ejm: Programacion" id="curso">
+                <label>Tema</label>
+                <input type="text" required placeholder="Ejm: Encapsulamiento" id="tema">
+                <label>Categoria</label>
+                <input class="text" required placeholder="Ejm: Logica" id="categoria">
+
+                <button class="btn_guardar" type="submit">Crear Tarea</button>
+            </form>
+        </div>
+        <div class="div_hacer" id="div_hacer"></div>
+        <div class="div_proceso" id="div_proceso"></div>
+        <div class="div_terminado" id="div_terminado"></div>
+    </main>
+    <script src="app.js"></script>
     
 </body>
 </html>
