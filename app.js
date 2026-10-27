@@ -29,6 +29,7 @@ formulario.addEventListener("submit",(evento) => {
 
     const contenedor_info = document.createElement("div")
     contenedor_info.classList.add("tarjeta_tarea")
+    contenedor_info.classList.add("estado_hacer")
     contenedor_info.setAttribute("draggable",true)
     contenedor_info.id = diccionario_curso.id
 
@@ -66,7 +67,10 @@ div_proceso.addEventListener("drop",(evento) => {
         if(parrafo.length >= 4 ){
             parrafo[3].innerHTML = `<strong>Estado:</strong> ${new_estado}`
         }
+        tarea_arrastrado.classList.remove("estado-hacer", "estado-proceso", "estado-terminado")
+        tarea_arrastrado.classList.add("estado-proceso")
         div_proceso.appendChild(tarea_arrastrado)
+
 
     }
 })
@@ -85,7 +89,10 @@ div_terminado.addEventListener("drop",(evento) => {
         if(parrafo.length >= 4){
             parrafo[3].innerHTML = `<strong>Estado:</strong> ${new_estado}`
         }
+        tarea_arrastrado.classList.remove("estado-hacer", "estado-proceso", "estado-terminado")
+        tarea_arrastrado.classList.add("estado-terminado")
         div_terminado.appendChild(tarea_arrastrado)
+        
     }
 })
 contenedor.addEventListener("dragover",(evento) => {
@@ -97,6 +104,7 @@ contenedor.addEventListener("drop",(evento) => {
     const id_tarea = evento.dataTransfer.getData("text/plain")
     const tarea_encontrada = document.getElementById(id_tarea)
     if(tarea_encontrada){
+        tarea_encontrada.classList.remove("estado-hacer", "estado-proceso", "estado-terminado")
         const new_estado = "Por Hacer"
         const parrafo = tarea_encontrada.querySelectorAll("p")
         if(parrafo.length >= 4){
@@ -105,4 +113,6 @@ contenedor.addEventListener("drop",(evento) => {
         contenedor.appendChild(tarea_encontrada)
     }
 })
+
+
 

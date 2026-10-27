@@ -21,11 +21,13 @@
     width: 340px;
     gap: 7px;
 }
+
 .div_crear{
     border: 2px solid #767373;
     display: flex;
     border-radius: 18px;
 }
+
 .div_hacer{ 
     border: 2px solid #767373;
     padding: 20px;
@@ -62,4 +64,13 @@
 .arrastrando{
     border: 2px dashed red;
     background-color: #f4ef6ab4
+}
+.estado-proceso {
+  background-color: #a7df9c; /* Amarillo/Naranja */
+  border:2px solid rgb(0, 255, 0);
+}
+
+.estado-terminado {
+  background-color: #ef7d7d; /* Verde */
+  border: 2px solid rgb(255, 0, 0);
 }
