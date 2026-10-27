@@ -3,9 +3,10 @@
     justify-content: center;
 }
 .tarjeta_tarea{
-    border: 3px solid #ea3d3d;
-    background-color: #e99191;
+    border: 2px solid #5c54f2;
+    background-color: #c9c8f8;
     border-radius: 7px;
+    padding-left: 22px;
 }
 .main_tarea{
     display: flex;
@@ -23,25 +24,42 @@
 .div_crear{
     border: 2px solid #767373;
     display: flex;
+    border-radius: 18px;
 }
 .div_hacer{ 
     border: 2px solid #767373;
     padding: 20px;
     width: 100%;
     width: 340px;
-    gap: 7px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
 }
 .div_proceso{ 
     border: 2px solid #767373;
     padding: 20px;
     width: 100%;
     width: 340px;
-    gap: 7px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
 }
 .div_terminado{ 
     border: 2px solid #767373;
     padding: 20px;
     width: 100%;
     width: 340px;
-    gap: 7px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+}
+.arrastrando{
+    border: 2px dashed red;
+    background-color: #f4ef6ab4
 }
