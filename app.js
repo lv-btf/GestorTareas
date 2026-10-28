@@ -17,6 +17,8 @@ function ActualizarEstado(id,nuevo_estado){
         localStorage.setItem("Tareas_guardadas",JSON.stringify(Arreglo_Tareas))
     }
 }
+
+
 formulario.addEventListener("submit",(evento) => {
     evento.preventDefault()
     const curso = curso_tarea.value.trim()
@@ -48,8 +50,9 @@ formulario.addEventListener("submit",(evento) => {
          <p><strong>Categoria:</strong> ${categoria}</p>
          <p><strong>Estado:</strong> ${estado}</p>`
          
-         contenedor_info.addEventListener("dragstart", (evento) => {
-             evento.dataTransfer.setData("text/plain",contenedor_info.id)
+    contenedor_info.addEventListener("dragstart", (evento) => {
+        evento.dataTransfer.setData("text/plain",contenedor_info.id)
+        contenedor_info.classList.remove("estado-hacer", "estado-proceso", "estado-terminado")
         contenedor_info.classList.add("arrastrando")       
     })
 
@@ -57,8 +60,8 @@ formulario.addEventListener("submit",(evento) => {
         contenedor_info.classList.remove("arrastrando")
     })
     contenedor.appendChild(contenedor_info)
+    LocalStorage()
     formulario.reset()
-    localStorage()
  }
 )
 
@@ -73,6 +76,8 @@ div_proceso.addEventListener("drop",(evento) => {
     const tarea_arrastrado = document.getElementById(id_tarea)
     if(tarea_arrastrado){     
         const new_estado = "En Proceso"
+        tarea_arrastrado.classList.add("estado-hacer", "estado-proceso", "estado-terminado")
+        tarea_arrastrado.classList.remove("estado-proceso")
         const parrafo = tarea_arrastrado.querySelectorAll("p")
         if(parrafo.length >= 4 ){
             parrafo[3].innerHTML = `<strong>Estado:</strong> ${new_estado}`
@@ -82,9 +87,7 @@ div_proceso.addEventListener("drop",(evento) => {
         tarea_arrastrado.classList.add("estado-proceso")
         div_proceso.appendChild(tarea_arrastrado)
 
-        ActualizarEstado(id_tarea,new_estado)
-        
-        
+        ActualizarEstado(id_tarea,new_estado)        
     }
 })
 
@@ -119,12 +122,13 @@ contenedor.addEventListener("drop",(evento) => {
     const id_tarea = evento.dataTransfer.getData("text/plain")
     const tarea_encontrada = document.getElementById(id_tarea)
     if(tarea_encontrada){
-        tarea_encontrada.classList.remove("estado-hacer", "estado-proceso", "estado-terminado")
-        const new_estado = "Por Hacer"
+        const new_estado = "Por hacer"
         const parrafo = tarea_encontrada.querySelectorAll("p")
         if(parrafo.length >= 4){
             parrafo[3].innerHTML = `<strong>Estado:</strong> ${new_estado}`
         }
+        tarea_encontrada.classList.remove("estado-hacer", "estado-proceso", "estado-terminado")
+
         contenedor.appendChild(tarea_encontrada)
         ActualizarEstado(id_tarea,new_estado)
     }
@@ -142,6 +146,13 @@ function LocalStorage(){
         
         div.addEventListener("dragstart",(evento) => { 
             evento.dataTransfer.setData("text/plain",div.id)
+            div.classList.add("arrastrando")  
+
+        })
+
+        div.addEventListener("dragend",(evento) => {
+            evento.preventDefault()
+            div.classList.remove("arrastrando")
         })
         
         div.innerHTML = `<p><strong>Curso:</strong> ${Arreglo_Tareas[i].curso}</p>
