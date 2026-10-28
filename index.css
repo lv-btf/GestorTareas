@@ -74,3 +74,38 @@
   background-color: #ef7d7d; /* Verde */
   border: 2px solid rgb(255, 0, 0);
 }
+
+.btn_eliminar{
+    background-color: #fff;
+    border-radius: 18px;
+    width: 100%;
+    width: 230px;
+    padding: 4px;
+
+}
+.btn_editar{ 
+    background-color: #fff;
+    border-radius: 18px;
+    width: 100%;
+    width: 230px;
+    padding: 4px;
+}
+
+.tarjeta_tarea button {
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+.contenedor_edit{
+    display: none; /* Se oculta al cargar la página */
+    position: fixed; /* Flota sobre la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Lo centra exactamente al medio */
+    z-index: 1000; /* Hace que quede por delante de todo */
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+}
